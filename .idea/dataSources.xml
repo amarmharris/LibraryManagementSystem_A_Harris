@@ -7,5 +7,24 @@
       <jdbc-driver>org.h2.Driver</jdbc-driver>
       <jdbc-url>jdbc:h2:~/LibraryDB</jdbc-url>
     </data-source>
+    <data-source source="LOCAL" name="CougLibrary" uuid="ee709611-9ab2-4931-aba6-10e0893c2e66">
+      <driver-ref>derby.embedded</driver-ref>
+      <synchronize>true</synchronize>
+      <configured-by-url>true</configured-by-url>
+      <jdbc-driver>org.apache.derby.jdbc.EmbeddedDriver</jdbc-driver>
+      <jdbc-url>jdbc:derby:memory:~/CougLibrary;create=true</jdbc-url>
+    </data-source>
+    <data-source source="LOCAL" name="CougarLib" uuid="a2a711ff-c784-4ffc-9662-2196733f121d">
+      <driver-ref>h2.unified</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>org.h2.Driver</jdbc-driver>
+      <jdbc-url>jdbc:h2:~/CougarLib;AUTO_SERVER=TRUE</jdbc-url>
+    </data-source>
+    <data-source source="LOCAL" name="@cougarlibrary.cyt69uqxe34i.us-east-2.rds.amazonaws.com" uuid="36509455-e024-4520-91b3-fa5be78a54ee">
+      <driver-ref>mysql.8</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>com.mysql.cj.jdbc.Driver</jdbc-driver>
+      <jdbc-url>Jdbc:mysql://cougarlibrary.cyt69uqxe34i.us-east-2.rds.amazonaws.com</jdbc-url>
+    </data-source>
   </component>
 </project>
