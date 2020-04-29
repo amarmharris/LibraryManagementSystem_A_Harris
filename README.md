@@ -23,7 +23,7 @@ where you will have privledges to add more books and media items as well as view
 If you specify 'admin' when creating an account it will also take you to this page. 
 
 
-#Required Jar files (the ones provided might now work so you'll probably have to add them from your computer_
+# Required Jar files (the ones provided might now work so you'll probably have to add them from your computer)
 
 - mysql-connector-java-5.1.48.jar
 - jfoenix-9.0.8.jar
