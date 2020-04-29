@@ -9,22 +9,22 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<TabPane fx:id="tabPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="566.0" prefWidth="836.0" style="-fx-background-color: #02688B;" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.viewTablesPageController">
+<TabPane fx:id="tabPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="566.0" prefWidth="873.0" style="-fx-background-color: #02688B;" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.viewTablesPageController">
   <tabs>
     <Tab fx:id="mediaPage" onSelectionChanged="#mediaPage" text="Media">
          <content>
-            <AnchorPane prefHeight="262.0" prefWidth="578.0">
+            <AnchorPane prefHeight="262.0" prefWidth="887.0">
                <children>
-                  <TableView fx:id="mediaTable" layoutX="148.0" layoutY="49.0" prefHeight="491.0" prefWidth="654.0" style="-fx-background-color: #286A61;">
+                  <TableView fx:id="mediaTable" layoutX="177.0" layoutY="49.0" prefHeight="491.0" prefWidth="689.0" style="-fx-background-color: #286A61;">
                     <columns>
-                      <TableColumn fx:id="mediaIDCol" prefWidth="75.99996948242188" text="Media ID" />
-                      <TableColumn fx:id="mediaTtleCol" prefWidth="244.80003356933594" text="Title" />
-                        <TableColumn fx:id="directorCol" prefWidth="168.0" text="Director" />
-                        <TableColumn fx:id="mediaDoeCol" minWidth="0.0" prefWidth="95.99993896484375" text="Date of entry" />
-                        <TableColumn fx:id="mediaStatusCol" prefWidth="67.199951171875" text="Status" />
+                      <TableColumn fx:id="mediaIDCol" prefWidth="57.5999755859375" text="Media ID" />
+                      <TableColumn fx:id="mediaTitleCol" prefWidth="264.0000762939453" text="Title" />
+                        <TableColumn fx:id="directorCol" prefWidth="181.59991455078125" text="Director" />
+                        <TableColumn fx:id="mediaDoeCol" minWidth="0.0" prefWidth="82.4000244140625" text="Date of entry" />
+                        <TableColumn fx:id="mediaStatusCol" prefWidth="100.0" text="Status" />
                     </columns>
                   </TableView>
-                  <JFXTextField focusColor="#5e72ac" layoutX="149.0" layoutY="14.0" prefHeight="26.0" prefWidth="686.0" promptText="Search media by ID or title" unFocusColor="WHITE" />
+                  <JFXTextField fx:id="mediaSearchTxt" focusColor="#5e72ac" layoutX="178.0" layoutY="14.0" prefHeight="26.0" prefWidth="686.0" promptText="Search media by ID or title" unFocusColor="WHITE" />
                   <JFXButton layoutX="14.0" layoutY="120.0" onAction="#addMedia" style="-fx-background-color: #D40177;" text="Add a media item" textFill="WHITE">
                      <font>
                         <Font name="System Bold" size="12.0" />
@@ -42,16 +42,16 @@
         <content>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="862.0">
                <children>
-                  <TableView fx:id="bookTable" layoutX="134.0" layoutY="45.0" prefHeight="493.0" prefWidth="702.0">
+                  <TableView fx:id="bookTable" layoutX="163.0" layoutY="42.0" prefHeight="493.0" prefWidth="702.0">
                     <columns>
-                      <TableColumn fx:id="bookIDCol" prefWidth="80.79998779296875" text="Book ID" />
-                      <TableColumn fx:id="bookTitleCol" minWidth="1.5999755859375" prefWidth="278.3999786376953" text="Title" />
-                        <TableColumn fx:id="authorCol" prefWidth="137.60003662109375" text="Author" />
-                        <TableColumn fx:id="bookDoeCol" prefWidth="119.199951171875" text="Date of entry" />
+                      <TableColumn fx:id="bookIDCol" prefWidth="52.00006103515625" text="Book ID" />
+                      <TableColumn fx:id="bookTitleCol" minWidth="1.5999755859375" prefWidth="307.19996643066406" text="Title" />
+                        <TableColumn fx:id="authorCol" prefWidth="170.4000244140625" text="Author" />
+                        <TableColumn fx:id="bookDoeCol" prefWidth="87.199951171875" text="Date of entry" />
                         <TableColumn fx:id="bookStatusCol" prefWidth="86.39990234375" text="Status" />
                     </columns>
                   </TableView>
-                  <JFXTextField layoutX="134.0" layoutY="8.0" prefHeight="26.0" prefWidth="701.0" promptText="Search book by ID, Title, or Author" />
+                  <JFXTextField fx:id="bookSearchTxt" layoutX="164.0" layoutY="8.0" prefHeight="26.0" prefWidth="701.0" promptText="Search book by ID, Title, or Author" />
                   <JFXButton layoutX="25.0" layoutY="134.0" onAction="#addBook" prefHeight="26.0" prefWidth="94.0" style="-fx-background-color: #D40177;" text="Add a book" textFill="WHITE">
                      <font>
                         <Font name="System Bold" size="12.0" />

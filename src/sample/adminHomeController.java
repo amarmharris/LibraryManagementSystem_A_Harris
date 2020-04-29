@@ -7,6 +7,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import javafx.scene.control.Tab;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -25,7 +26,6 @@ public class adminHomeController implements Initializable {
     public Label numItemsLabel;
     public Label nameLabel;
     public Label cookie;
-
 
     int cookieAccountID;
 
@@ -63,12 +63,18 @@ public class adminHomeController implements Initializable {
         
     }
 
-    public void viewBooks(ActionEvent actionEvent) {
+    public void viewBooks(ActionEvent actionEvent) throws IOException {
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("viewTablesPage.fxml"));
+        Parent GUI = loader.load();
+        Scene scene = new Scene(GUI);
+        viewTablesPageController controller = loader.getController();
+        controller.passData(Integer.parseInt(cookie.getText()));
+        //controller.tabPane.getSelectionModel().select(booksPage);
+        Stage window = (Stage)((Node) actionEvent.getSource()).getScene().getWindow();
+        window.setScene(scene);
+        window.show();
     }
-
-    public void viewMedia(ActionEvent actionEvent) {
-    }
-
 
     public void addBook(ActionEvent actionEvent) throws IOException {
 
@@ -91,6 +97,17 @@ public class adminHomeController implements Initializable {
         Scene scene = new Scene(GUI);
         enterMediaController controller = loader.getController();
         controller.passData(Integer.parseInt(cookie.getText()));
+        Stage window = (Stage)((Node) actionEvent.getSource()).getScene().getWindow();
+        window.setScene(scene);
+        window.show();
+    }
+
+    public void logOut(ActionEvent actionEvent) throws IOException {
+
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("MainPage.fxml"));
+        Parent GUI = loader.load();
+        Scene scene = new Scene(GUI);
         Stage window = (Stage)((Node) actionEvent.getSource()).getScene().getWindow();
         window.setScene(scene);
         window.show();

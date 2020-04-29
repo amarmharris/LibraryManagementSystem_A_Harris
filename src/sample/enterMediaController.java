@@ -6,6 +6,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
@@ -44,46 +45,72 @@ public class enterMediaController implements Initializable {
         ResultSet rs = null;
         PreparedStatement stmt = null;
 
-        try {
+        if (validateText()) {
+            try {
 
-            Connection conn = DriverManager.getConnection(DB_URL, userName, password);
+                Connection conn = DriverManager.getConnection(DB_URL, userName, password);
 
-            String sql0 = "SELECT NumOfMediaEntered FROM COUGARLIBRARY.ADMIN WHERE ACCOUNT_ID = ?";
-            String sql1 = "insert into COUGARLIBRARY.MEDIA (TITLE, DIRECTOR, entrant_id) values (?, ?, ?);";
-            String sql2 = "update COUGARLIBRARY.ADMIN set NumOfMediaEntered = ? where ACCOUNT_ID = ?;";
+                String sql0 = "SELECT NumOfMediaEntered FROM COUGARLIBRARY.ADMIN WHERE ACCOUNT_ID = ?";
+                String sql1 = "insert into COUGARLIBRARY.MEDIA (TITLE, DIRECTOR, entrant_id) values (?, ?, ?);";
+                String sql2 = "update COUGARLIBRARY.ADMIN set NumOfMediaEntered = ? where ACCOUNT_ID = ?;";
 
-            stmt = conn.prepareStatement(sql0);
-            stmt.setInt(1,cookieAccountID);
-            rs = stmt.executeQuery();
-            while (rs.next()) {
-                numOfMediaEntered = rs.getInt("NumOfMediaEntered");
+                stmt = conn.prepareStatement(sql0);
+                stmt.setInt(1, cookieAccountID);
+                rs = stmt.executeQuery();
+                while (rs.next()) {
+                    numOfMediaEntered = rs.getInt("NumOfMediaEntered");
+                }
+                rs.close();
+
+                stmt = conn.prepareStatement(sql1);
+                stmt.setString(1, mediaTitle);
+                stmt.setString(2, director);
+                stmt.setInt(3, cookieAccountID);
+                stmt.executeUpdate();
+
+                stmt = conn.prepareStatement(sql2);
+                stmt.setInt(1, (numOfMediaEntered + 1));
+                stmt.setInt(2, cookieAccountID);
+                stmt.executeUpdate();
+
+                FXMLLoader loader = new FXMLLoader();
+                loader.setLocation(getClass().getResource("adminHome.fxml"));
+                Parent GUI = loader.load();
+                Scene scene = new Scene(GUI);
+                adminHomeController controller = loader.getController();
+                controller.passData(cookieAccountID);
+                Stage window = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+                window.setScene(scene);
+                window.show();
+
+            } catch (SQLException | IOException throwables) {
+                throwables.printStackTrace();
             }
-            rs.close();
-
-            stmt = conn.prepareStatement(sql1);
-            stmt.setString(1, mediaTitle);
-            stmt.setString(2, director);
-            stmt.setInt(3, cookieAccountID);
-            stmt.executeUpdate();
-
-            stmt=conn.prepareStatement(sql2);
-            stmt.setInt(1,(numOfMediaEntered+1));
-            stmt.setInt(2, cookieAccountID);
-            stmt.executeUpdate();
-
-            FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(getClass().getResource("adminHome.fxml"));
-            Parent GUI = loader.load();
-            Scene scene = new Scene(GUI);
-            adminHomeController controller = loader.getController();
-            controller.passData(cookieAccountID);
-            Stage window = (Stage)((Node) actionEvent.getSource()).getScene().getWindow();
-            window.setScene(scene);
-            window.show();
-
-        } catch (SQLException | IOException throwables) {
-            throwables.printStackTrace();
         }
+    }
 
+    public boolean validateText() {
+        if (mediaTitleTxt.getText().isEmpty() || mediaDirectorTxt.getText().isEmpty()) {
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Validate Fields");
+            alert.setHeaderText(null);
+            alert.setContentText("Please fill out all the fields");
+            alert.showAndWait();
+            return false;
+        }
+        return true;
+    }
+
+    public void back2Home(ActionEvent actionEvent) throws IOException {
+
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("adminHome.fxml"));
+        Parent GUI = loader.load();
+        Scene scene = new Scene(GUI);
+        adminHomeController controller = loader.getController();
+        controller.passData(cookieAccountID);
+        Stage window = (Stage)((Node) actionEvent.getSource()).getScene().getWindow();
+        window.setScene(scene);
+        window.show();
     }
 }
