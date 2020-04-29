@@ -12,7 +12,7 @@ Admin login account (Username: admin, Password: Cougar2020)
 
 You also have the option to create an account and choose your account type.
 
-each account type is different in that the due dates will be set differently based on the account type.
+Each account type is different in that the due dates will be set differently based on the account type.
 
 You will only be allowed to checkout a limited number of items as well based on your account type 
 
