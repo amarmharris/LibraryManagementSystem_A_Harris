@@ -118,6 +118,7 @@ public class bookCatalogController implements Initializable {
 
                 int lendingPeriod = 0;
                 int bookLimit = 0;
+                String accountType = null;
                 int currentNumOfBooks = 0;
                 stmt = conn.prepareStatement(sql);
                 stmt.setInt(1, cookieAccountID);
@@ -125,6 +126,7 @@ public class bookCatalogController implements Initializable {
                 while(getAccountInfo.next()) {
                     lendingPeriod = getAccountInfo.getInt("LENDING_PERIOD");
                     bookLimit = getAccountInfo.getInt("BOOK_LIMIT");
+                    accountType = getAccountInfo.getString("ACCOUNT_TYPE");
                 }
 
                 stmt = conn.prepareStatement(sq);
@@ -141,7 +143,7 @@ public class bookCatalogController implements Initializable {
                 java.sql.Date sqlDate = new java.sql.Date(date.getTime());
 
                 if (currentNumOfBooks == bookLimit ) {
-                    JOptionPane.showMessageDialog(null, "You have reached your book limit.\n Please return a book before you checkout another book.", "Error", JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(null, "As a " + accountType + " you have reached your limit of " + bookLimit + " books.\n Please return a book before you checkout another one.", "Error", JOptionPane.ERROR_MESSAGE);
 
                     FXMLLoader loader = new FXMLLoader();
                     loader.setLocation(getClass().getResource("userViewTables.fxml"));

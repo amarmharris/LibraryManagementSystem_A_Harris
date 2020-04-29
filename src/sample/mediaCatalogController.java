@@ -119,6 +119,7 @@ public class mediaCatalogController implements Initializable {
 
                 int lendingPeriod = 0;
                 int mediaLimit = 0;
+                String accountType = null;
                 int currentNumOfMedia = 0;
                 stmt = conn.prepareStatement(sql);
                 stmt.setInt(1, cookieAccountID);
@@ -126,6 +127,7 @@ public class mediaCatalogController implements Initializable {
                 while(getAccountInfo.next()) {
                     lendingPeriod = getAccountInfo.getInt("LENDING_PERIOD");
                     mediaLimit = getAccountInfo.getInt("MEDIA_LIMIT");
+                    accountType = getAccountInfo.getString("ACCOUNT_TYPE");
                 }
 
                 stmt = conn.prepareStatement(sq);
@@ -142,7 +144,7 @@ public class mediaCatalogController implements Initializable {
                 java.sql.Date sqlDate = new java.sql.Date(date.getTime());
 
                 if (currentNumOfMedia == mediaLimit ) {
-                    JOptionPane.showMessageDialog(null, "You have reached your media limit.\n Please return a media item before you checkout another one.", "Error", JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(null, "As a " + accountType + " you have reached your limit of " + mediaLimit + " media items.\n Please return a media item before you checkout another one.", "Error", JOptionPane.ERROR_MESSAGE);
 
                     FXMLLoader loader = new FXMLLoader();
                     loader.setLocation(getClass().getResource("userViewTables.fxml"));
