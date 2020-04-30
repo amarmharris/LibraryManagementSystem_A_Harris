@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="398.0" prefWidth="745.0" style="-fx-background-color: #02688B;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.bookCatalogController">
+   <children>
+      <TableView fx:id="bookTable" layoutX="140.0" layoutY="54.0" prefHeight="343.0" prefWidth="607.0">
+        <columns>
+            <TableColumn fx:id="bookIDCol" prefWidth="53.60003662109375" text="Book ID" />
+          <TableColumn fx:id="titleCol" prefWidth="223.2000732421875" text="Title" />
+          <TableColumn fx:id="authorCol" prefWidth="104.79998779296875" text="Author" />
+            <TableColumn fx:id="statusCol" prefWidth="139.20001220703125" text="Status" />
+            <TableColumn fx:id="dueDateCol" prefWidth="84.7999267578125" text="Due date" />
+        </columns>
+      </TableView>
+      <JFXButton layoutX="21.0" layoutY="143.0" onAction="#checkoutBook" style="-fx-background-color: #D40177;" text="CHECKOUT ITEM" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </JFXButton>
+      <JFXButton layoutX="23.0" layoutY="200.0" onAction="#back2Home" prefHeight="26.0" prefWidth="106.0" style="-fx-background-color: #D40177;" text="Back to home" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </JFXButton>
+      <TextField fx:id="searchBooksTxt" layoutX="147.0" layoutY="19.0" prefHeight="26.0" prefWidth="598.0" promptText="Search books" />
+      <Label layoutX="6.0" layoutY="13.0" prefHeight="39.0" prefWidth="180.0" text="Book catalog" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="22.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

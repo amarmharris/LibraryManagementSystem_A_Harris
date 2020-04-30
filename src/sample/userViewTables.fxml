@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<TabPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="257.0" prefWidth="756.0" style="-fx-background-color: #02688B;" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.userViewTablesController">
+  <tabs>
+      <Tab closable="false" text="Checked out books">
+         <content>
+            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: #02688B;">
+               <children>
+                  <TableView fx:id="bookTable" layoutX="139.0" prefHeight="226.0" prefWidth="615.0">
+                     <columns>
+                        <TableColumn fx:id="bookIDCol" prefWidth="52.800018310546875" text="Book ID" />
+                        <TableColumn fx:id="BissueIDCol" prefWidth="50.4000244140625" text="Issue ID" />
+                        <TableColumn fx:id="bookTitleCol" prefWidth="196.79998779296875" text="Book Title" />
+                        <TableColumn fx:id="bookAuthorCol" prefWidth="143.20001220703125" text="Author" />
+                        <TableColumn fx:id="bookCdateCol" prefWidth="92.80001831054688" text="Checkout Date" />
+                        <TableColumn fx:id="bookDdateCol" prefWidth="75.20000000000005" text="Due Date" />
+                     </columns>
+                  </TableView>
+                  <JFXButton layoutX="11.0" layoutY="64.0" onAction="#searchBooks" style="-fx-background-color: #D40177;" text="SEARCH for books" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </JFXButton>
+                  <JFXButton layoutX="11.0" layoutY="100.0" onAction="#returnBook" prefHeight="26.0" prefWidth="119.0" style="-fx-background-color: #D40177;" text="RETURN book" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </JFXButton>
+                  <JFXButton layoutX="14.0" layoutY="158.0" onAction="#back2Home" prefHeight="26.0" prefWidth="106.0" style="-fx-background-color: #D40177;" text="Back to home" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </JFXButton>
+               </children>
+            </AnchorPane>
+         </content>
+      </Tab>
+      <Tab closable="false" text="Checked out media">
+         <content>
+            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+               <children>
+                  <TableView fx:id="mediaTable" layoutX="136.0" prefHeight="226.0" prefWidth="618.0">
+                     <columns>
+                        <TableColumn fx:id="mediaIDCol" prefWidth="56.000030517578125" text="Media ID" />
+                        <TableColumn fx:id="MissueIDCol" prefWidth="52.0" text="Issue ID" />
+                        <TableColumn fx:id="mediaTitleCol" prefWidth="209.5999755859375" text="Media Title" />
+                        <TableColumn fx:id="mediaDirectorCol" prefWidth="120.80001831054688" text="Director" />
+                        <TableColumn fx:id="mediaCdateCol" prefWidth="100.800048828125" text="Checkout Date" />
+                        <TableColumn fx:id="mediaDdateCol" prefWidth="76.79996337890623" text="Due date" />
+                     </columns>
+                  </TableView>
+                  <JFXButton layoutX="10.0" layoutY="68.0" onAction="#searchMedia" style="-fx-background-color: #D40177;" text="SEARCH for media" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </JFXButton>
+                  <JFXButton layoutX="10.0" layoutY="100.0" onAction="#returnMedia" prefHeight="26.0" prefWidth="120.0" style="-fx-background-color: #D40177;" text="RETURN media" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </JFXButton>
+                  <JFXButton layoutX="10.0" layoutY="158.0" onAction="#back2Home" prefHeight="26.0" prefWidth="113.0" style="-fx-background-color: #D40177;" text="Back to home" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </JFXButton>
+               </children>
+            </AnchorPane>
+         </content>
+      </Tab>
+  </tabs>
+</TabPane>
